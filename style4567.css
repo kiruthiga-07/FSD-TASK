@@ -1,0 +1,25 @@
+.restaurant-box,
+.offer-box,
+.contact-box{
+    background-color: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+
+.offer-box ul{
+    line-height: 2;
+    font-size: 18px;
+}
+
+.contact-box p{
+    font-size: 17px;
+}
+
+.restaurant-box:hover,
+.offer-box:hover,
+.contact-box:hover{
+    transform: scale(1.02);
+    transition: 0.3s;
+}
