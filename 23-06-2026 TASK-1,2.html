@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Alert and DOM Example</title>
+
+    <style>
+        body{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background: rgb(250, 250, 198);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container{
+            background-color: white;
+            padding: 30px;
+            width: 500px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1{
+            color: rgb(99, 55, 0);
+            padding: 10px;
+        }
+
+        #message{
+            font-size: 20px;
+            color: rgb(112, 78, 36);
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        button{
+            background-color: rgb(105, 58, 0);
+            color: rgb(250, 250, 198);
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        button:hover{
+            background-color: rgb(189, 161, 127);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>JavaScript Task - 1 & 2</h1>
+
+        <p id="message">
+             This button has been waiting all day for someone to click it.
+        </p>
+
+        <button onclick="showMessage()">
+            Click Here
+        </button>
+    </div>
+
+    <script>
+        let changed = false;
+
+        function showMessage()
+        {
+            alert("😄 Congratulations! The button noticed you!");
+
+            let message = document.getElementById("message");
+
+            if(changed == false)
+            {
+                message.textContent =
+                "The button is happy now. Thanks for making its day! 😊";
+                changed = true;
+            }
+            else
+            {
+                message.textContent =
+                "The button says: 'Again? I like your enthusiasm!' 😄";
+                changed = false;
+            }
+        }
+    </script>
+
+</body>
+</html>
