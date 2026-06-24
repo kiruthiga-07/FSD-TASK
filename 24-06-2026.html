@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background: plum;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:450px;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h1{
+            text-align:center;
+            color:#333;
+            margin-bottom:20px;
+        }
+
+        label{
+            display:block;
+            margin-top:12px;
+            margin-bottom:5px;
+            font-weight:bold;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        input:focus{
+            outline:none;
+            border-color:purple;
+        }
+
+        button{
+            width:100%;
+            margin-top:20px;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:purple;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:plum;
+        }
+
+        #message{
+            margin-top:15px;
+            text-align:center;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Registration</h1>
+
+    <input type="text" id="name" placeholder="Enter your name"><br><br>
+
+    <input type="text" id="email" placeholder="Enter your email"><br><br>
+
+    <input type="number" id="age" placeholder="Enter your age"><br><br>
+
+    <input type="text" id="department" placeholder="Enter your department"><br>
+
+    <button id="registerBtn">Register</button><br><br>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+    const registerBtn = document.getElementById("registerBtn");
+
+    registerBtn.addEventListener("click", function(){
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let age = document.getElementById("age").value.trim();
+        let department = document.getElementById("department").value.trim();
+
+        let message = document.getElementById("message");
+
+        // Name Validation (only alphabets and spaces)
+        let namePattern = /^[A-Za-z ]+$/;
+
+        // Email Validation
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if(name === ""){
+            message.innerHTML = "❌ Name cannot be empty";
+            message.style.color = "red";
+        }
+        else if(!namePattern.test(name)){
+            message.innerHTML = "❌ Name should contain only alphabets";
+            message.style.color = "red";
+        }
+        else if(email === ""){
+            message.innerHTML = "❌ Email cannot be empty";
+            message.style.color = "red";
+        }
+        else if(!emailPattern.test(email)){
+            message.innerHTML = "❌ Enter a valid email address";
+            message.style.color = "red";
+        }
+        else if(age === ""){
+            message.innerHTML = "❌ Age cannot be empty";
+            message.style.color = "red";
+        }
+        else if(age < 18 || age > 30){
+            message.innerHTML = "❌ Age must be between 18 and 30";
+            message.style.color = "red";
+        }
+        else if(department === ""){
+            message.innerHTML = "❌ Department cannot be empty";
+            message.style.color = "red";
+        }
+        else{
+            message.innerHTML =
+            "✅ Registration Successful! Welcome " + name;
+            message.style.color = "green";
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
