@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background:  #03ad8e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container{
+            width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .form-group{
+            margin-bottom: 15px;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input,
+        select{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus{
+            outline: none;
+            border-color: #03ad8e;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background-color: #03ad8e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover{
+            background-color: #49a997;
+        }
+
+        #result{
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            background-color:#e1fef9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Student Registration Form</h2>
+
+    <form id="studentForm">
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+        </div>
+
+        <div class="form-group">
+            <label for="department">Department</label>
+            <select id="department">
+                <option value="">Select Department</option>
+                <option>B.Sc Computer Science</option>
+                <option>BCA</option>
+                <option>B.Com</option>
+                <option>BBA</option>
+            </select>
+        </div>
+
+        <button type="button" onclick="validateForm()">
+            Register
+        </button>
+
+    </form>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function validateForm(){
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let department = document.getElementById("department").value;
+
+    let namePattern = /^[A-Za-z ]+$/;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let phonePattern = /^[0-9]{10}$/;
+
+    if(name === ""){
+        alert("Please enter your name.");
+        return;
+    }
+
+    if(!namePattern.test(name)){
+        alert("Name should contain only letters.");
+        return;
+    }
+
+    if(!emailPattern.test(email)){
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    if(!phonePattern.test(phone)){
+        alert("Phone number must contain exactly 10 digits.");
+        return;
+    }
+
+    if(department === ""){
+        alert("Please select a department.");
+        return;
+    }
+
+    let result = document.getElementById("result");
+
+    result.style.display = "block";
+
+    result.innerHTML =
+    "<h3>Registration Successful ✅</h3>" +
+    "<p><strong>Name:</strong> " + name + "</p>" +
+    "<p><strong>Email:</strong> " + email + "</p>" +
+    "<p><strong>Phone:</strong> " + phone + "</p>" +
+    "<p><strong>Department:</strong> " + department + "</p>";
+}
+</script>
+
+</body>
+</html>
